@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import Products from "./components/Products/Products";
@@ -10,6 +11,8 @@ import Subscribe from "./components/Subscribe/Subscribe";
 import Testimonials from "./components/Testimonials/Testimonials";
 import Footer from "./components/Footer/Footer";
 import Popup from "./components/Popup/Popup";
+import Cart from "./pages/Cart/Cart";
+import Address from "./pages/Address/Address";
 
 const App = () => {
   const [orderPopup, setOrderPopup] = React.useState(false);
@@ -17,6 +20,7 @@ const App = () => {
   const handleOrderPopup = () => {
     setOrderPopup(!orderPopup);
   };
+
   React.useEffect(() => {
     AOS.init({
       offset: 100,
@@ -28,18 +32,29 @@ const App = () => {
   }, []);
 
   return (
-    <div className="bg-white dark:bg-gray-900 dark:text-white duration-200">
+    <Router>
       <Navbar handleOrderPopup={handleOrderPopup} />
-      <Hero handleOrderPopup={handleOrderPopup} />
-      <Products />
-      <TopProducts handleOrderPopup={handleOrderPopup} />
-      <Banner />
-      <Subscribe />
-      <Products />
-      <Testimonials />
-      <Footer />
-      <Popup orderPopup={orderPopup} setOrderPopup={setOrderPopup} />
-    </div>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div className="bg-white dark:bg-gray-900 dark:text-white duration-200">
+              <Hero handleOrderPopup={handleOrderPopup} />
+              <Products />
+              <TopProducts handleOrderPopup={handleOrderPopup} />
+              <Banner />
+              <Subscribe />
+              <Products />
+              <Testimonials />
+              <Footer />
+              <Popup orderPopup={orderPopup} setOrderPopup={setOrderPopup} />
+            </div>
+          }
+        />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/address" element={<Address />} />
+      </Routes>
+    </Router>
   );
 };
 
