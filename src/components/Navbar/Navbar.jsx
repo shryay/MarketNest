@@ -93,6 +93,14 @@ const Navbar = () => {
             <div>
               <DarkMode />
             </div>
+
+            {/* Login button */}
+            <button
+              onClick={() => navigate("/login")}
+              className="bg-gradient-to-r from-primary to-secondary transition-all duration-200 text-white py-1 px-4 rounded-full"
+            >
+              Login
+            </button>
           </div>
         </div>
       </div>

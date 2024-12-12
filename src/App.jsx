@@ -13,6 +13,9 @@ import Footer from "./components/Footer/Footer";
 import Popup from "./components/Popup/Popup";
 import Cart from "./pages/Cart/Cart";
 import Address from "./pages/Address/Address";
+import Register from "./pages/Register/Register";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
+import Login from "./pages/Login/Login";
 
 const App = () => {
   const [orderPopup, setOrderPopup] = React.useState(false);
@@ -53,6 +56,9 @@ const App = () => {
         />
         <Route path="/cart" element={<Cart />} />
         <Route path="/address" element={<Address />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   );
